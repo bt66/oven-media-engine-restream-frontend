@@ -1,0 +1,52 @@
+<div class="container">
+    <h2>Servers</h2>
+    <button mat-raised-button color="primary" (click)="openInputModal()">Add Server</button>
+    <div class="moodal-container" *ngIf="moodalInput">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h2>Input Data</h2>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="addServer()">
+                    <div>
+                        <label for="restramTile">Datacenter Name</label>
+                        <input type="text" name="restramTile" [(ngModel)]="data.Datacenter">
+                    </div>
+                    <div>
+                        <label for="ServerName">Server Name</label>
+                        <input type="text" name="ServerName" [(ngModel)]="data.ServerName">
+                    </div>
+                    <div>
+                        <label for="StreamName">Endpoint url</label>
+                        <input type="text" name="StreamName" [(ngModel)]="data.Endpoint">
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+          </div>
+    </div>
+    <div style="overflow-x: auto;">
+        <table id="ServerTable">
+            <tr>
+                <th>No.</th>
+                <th>Server Name</th>
+                <th>Datacenter</th>
+                <th>API Endpoint</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let data of serverData;let indexOfelement=index">
+                <td>{{indexOfelement+1+"."}}</td>
+                <td>{{data.ServerName}}</td>
+                <td>{{data.Datacenter}}</td>
+                <td>{{data.Endpoint}}</td>
+                <td>
+                    <div class="actions">
+                        <button mat-raised-button color="primary" (click)="openUpdateModal(data)">Edit</button>
+                        <button mat-raised-button color="warn" (click)="deleteServer(data._id)">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+</div>

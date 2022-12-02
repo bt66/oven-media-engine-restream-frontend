@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Create Restream</h2>
+    <button mat-raised-button color="primary" routerLink="/CreateRestream">Add Restream</button>
+    <div style="overflow-x: auto;">
+        <table id="RestreamTable">
+            <tr>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Straem Name</th>
+                <th>Origin Server</th>
+                <th>Stream URL</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let data of dataReStream;let indexOfelement=index">
+                <td>{{indexOfelement+1+"."}}</td>
+                <td>{{data.restreamTitle}}</td>
+                <td>{{data.streamName}}</td>
+                <td>{{data.originServer}}</td>
+                <td>{{data.streamUrl}}</td>
+                <td>
+                    <div>
+                        <button mat-raised-button color="warn" (click)="deleteRestram(data._id, data.Endpoint)">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
